@@ -1,0 +1,6 @@
+@include font-face('FF Tibere', '../fonts/3444ED_1_0', 300, normal, eot woff2 woff ttf);
+@include font-face('FF Tibere', '../fonts/3444ED_4_0', 700, 'bold', eot woff2 woff ttf);
+
+html body {
+    font-family: 'FF Tibere', serif;
+}
