@@ -42,9 +42,9 @@ module.exports = {
                                 loader: 'sass-resources-loader',
                                 options: {
                                     resources: [
-                                        path.join(__dirname, 'src', 'assets', 'sass', '_functions.scss'),
-                                        path.join(__dirname, 'src', 'assets', 'sass', '_variables.scss'),
-                                        path.join(__dirname, 'src', 'assets', 'sass', '_mixins.scss')
+                                        path.join(__dirname, 'src', 'assets', 'sass', 'abstract', '_functions.scss'),
+                                        path.join(__dirname, 'src', 'assets', 'sass', 'abstract', '_variables.scss'),
+                                        path.join(__dirname, 'src', 'assets', 'sass', 'abstract', '_mixins.scss')
                                     ]
                                 }
                             }

@@ -1,0 +1,140 @@
+// =============================================================================
+// String Replace
+// =============================================================================
+@function str-replace($string, $search, $replace: "") {
+    $index: str-index($string, $search);
+    @if $index {
+        @return str-slice($string, 1, $index - 1)+$replace+str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    }
+    @return $string;
+}
+
+// =============================================================================
+// Font Face
+// =============================================================================
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+    $src: null;
+    $extmods: ( eot: "?", svg: "#" + str-replace($name, " ", "_"));
+    $formats: ( otf: "opentype", ttf: "truetype");
+    @each $ext in $exts {
+        $extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+        $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+        $src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+    }
+    @font-face {
+        font-family: quote($name);
+        font-style: $style;
+        font-weight: $weight;
+        src: $src;
+    }
+}
+
+// Hide Off Screen
+//
+// Position an element off-screen for screen-readers.
+//
+// Markup:
+// //
+// // Mixin: Hide Off Screen
+// // @include hide-off-screen();
+// //
+// // no parameters available
+// //
+// .element { @include hide-off-screen; }
+//
+// Styleguide Functions - Hide Off Screen
+@mixin hide-off-screen {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+// Show On Screen
+//
+// Reset a previously hidden object via @mixin hide-off-screen
+//
+// Markup:
+// //
+// // Mixin: Show On Screen
+// // @include show-on-screen();
+// //
+// // no parameters available
+// //
+// .element { @include show-on-screen; }
+//
+// Styleguide Functions - Show On Screen
+@mixin show-on-screen {
+    position: inherit;
+    left: inherit;
+    top: inherit;
+    width: inherit;
+    height: inherit;
+    overflow: inherit;
+}
+
+// Absolute Center
+//
+// Position an element vertically and horizontally centered.
+//
+// Markup:
+// //
+// // Mixin: Absolute Center
+// // @include absolute-center();
+// //
+// // no parameters available
+// // Note: parent element should use position: relative;
+// //
+// .element { @include absolute-center; }
+//
+// Styleguide Functions - Absolute Center
+@mixin absolute-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+// Vertical Center
+//
+// Position an element vertically centered.
+//
+// Markup:
+// //
+// // Mixin: Vertical Center
+// // @include vertical-center();
+// //
+// // no parameters available
+// // Note: parent element should use position: relative;
+// //
+// .element { @include vertical-center; }
+//
+// Styleguide Functions - Vertical Center
+@mixin vertical-center {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+// Horizontal Center
+//
+// Position an element vertically centered.
+//
+// Markup:
+// //
+// // Mixin: Horizontal Center
+// // @include horizontal-center();
+// //
+// // no parameters available
+// // Note: parent element should use position: relative;
+// //
+// .element { @include horizontal-center; }
+//
+// Styleguide Functions - Horizontal Center
+@mixin horizontal-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
