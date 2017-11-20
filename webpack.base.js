@@ -1,3 +1,4 @@
+const config = require('./config');
 const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -6,14 +7,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const KssWebpackPlugin = require('kss-webpack-plugin');
-
-const config = {
-    paths: {
-        src: path.join(__dirname, "src"),
-        bin: path.join(__dirname, "bin"),
-        www: '/assets/'
-    }
-}
 
 module.exports = {
     frontend: {

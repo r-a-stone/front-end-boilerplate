@@ -76,3 +76,29 @@
         @return map-get($radius, $size);
     }
 }
+
+@function strip-unit($number) {
+    @if type-of($number)=='number' and not unitless($number) {
+        @return $number / ($number * 0 + 1);
+    }
+    @return $number;
+}
+
+// REMs
+//
+// Generate a rough approximation of REM value.
+//
+// Markup:
+// //
+// // Function: Rem
+// // rem( $pxValue );
+// //
+// // $pxValue: 'string'
+// //
+// width: rem(16px);
+//
+// Styleguide Functions - REM
+// Generate a rough approximation of REM value.
+@function rem($pxValue) {
+    @return (strip-unit($pxValue) / 16) * 1rem;
+}

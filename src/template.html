@@ -1,9 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title><%= htmlWebpackPlugin.options.title %></title>
-    </head>
-    <body>
-        <div id="mount"></div>
-    </body>
+
+<head>
+    <title>
+        <%= htmlWebpackPlugin.options.title %>
+    </title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+
+<body>
+    <a class="shortcut--main" href="#content-container">Skip to main content</a>
+    <header class="site-header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+        <div class="wrapper">
+            <div class="site-header-actions">
+                <h1 class="logo logo--header">
+                    <a href="/" title="Back to home page">
+                        <span>Front End Boilerplate</span>
+                    </a>
+                </h1>
+                <button id="site-header-actions__toggle--menu" class="site-header-actions__toggle site-header-actions__toggle--menu" aria-controls="site-header-panels__panel--menu"
+                    aria-expanded="false">Menu</button>
+            </div>
+            <div class="site-header-panels">
+                <div class="site-header-panels__panel site-header-panels__panel--menu">
+                    <nav role="navigation"></nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main id="content-container" class="site-main">
+        <div class="wrapper">
+
+        </div>
+    </main>
+    <footer class="site-footer" role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
+        <div class="wrapper">
+
+        </div>
+    </footer>
+</body>
+
 </html>
