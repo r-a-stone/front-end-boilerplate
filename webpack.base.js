@@ -5,15 +5,24 @@ const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const KssWebpackPlugin = require('kss-webpack-plugin');
+
+const config = {
+    paths: {
+        src: path.join(__dirname, "src"),
+        bin: path.join(__dirname, "bin"),
+        www: '/assets/'
+    }
+}
 
 module.exports = {
     frontend: {
         name: 'frontend',
         target: 'web',
-        entry: path.join(__dirname, "src", "assets", "javascript", "entry.js"),
+        entry: path.join(config.paths.src, "assets", "javascript", "entry.js"),
         output: {
-            path: path.join(__dirname, 'bin', 'assets'),
-            publicPath: '/assets/',
+            path: path.join(config.paths.bin, 'assets'),
+            publicPath: config.paths.www,
             filename: "[chunkhash].js"
         },
         module: {
@@ -42,9 +51,9 @@ module.exports = {
                                 loader: 'sass-resources-loader',
                                 options: {
                                     resources: [
-                                        path.join(__dirname, 'src', 'assets', 'sass', '_functions.scss'),
-                                        path.join(__dirname, 'src', 'assets', 'sass', '_variables.scss'),
-                                        path.join(__dirname, 'src', 'assets', 'sass', '_mixins.scss')
+                                        path.join(config.paths.src, 'assets', 'sass', 'abstract', '_functions.scss'),
+                                        path.join(config.paths.src, 'assets', 'sass', 'abstract', '_variables.scss'),
+                                        path.join(config.paths.src, 'assets', 'sass', 'abstract', '_mixins.scss')
                                     ]
                                 }
                             }
@@ -63,8 +72,8 @@ module.exports = {
         plugins: [
             new HtmlWebpackPlugin({title: 'Front End Boilerplate', template: 'src/template.html', filename: '../index.html'}),
             new ManifestPlugin({
-                fileName: path.join(__dirname, 'bin', 'manifest.json'),
-                publicPath: '/assets/'
+                fileName: path.join(config.paths.bin, 'manifest.json'),
+                publicPath: config.paths.www
             }),
             new WebpackCleanupPlugin(),
             new webpack.DefinePlugin({
@@ -88,10 +97,14 @@ module.exports = {
                 .CommonsChunkPlugin({name: "manifest", minChunks: Infinity}),
             new CopyWebpackPlugin([
                 {
-                    from: 'src/assets/images/',
-                    to: 'images/'
+                    from: path.join(config.paths.src, 'assets', 'images'),
+                    to: path.join(config.paths.bin, 'assets', 'images')
                 }
-            ])
+            ]),
+            new KssWebpackPlugin({
+                source: path.join(config.paths.src, 'assets'),
+                destination: path.join(config.paths.bin, 'styleguide')
+            })
         ]
     }
 };

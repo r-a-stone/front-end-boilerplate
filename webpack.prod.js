@@ -22,4 +22,4 @@ module.exports = [merge(baseConfig.frontend, {
                 }
             })
         ]
-    })]
+    })];

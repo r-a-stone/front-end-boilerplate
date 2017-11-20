@@ -6,7 +6,7 @@
 *.exe
 *.o
 *.so
-/bin
+bin/
 
 # Packages #
 ############
@@ -29,7 +29,8 @@
 
 # Vendor packages #
 ###################
-/node_modules
+node_modules/
+vendor/
 
 # OS generated files #
 ######################

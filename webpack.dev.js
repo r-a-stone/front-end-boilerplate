@@ -12,4 +12,4 @@ module.exports = [merge(baseConfig.frontend, {
             port: 9000,
             historyApiFallback: true
         }
-    })]
+    })];

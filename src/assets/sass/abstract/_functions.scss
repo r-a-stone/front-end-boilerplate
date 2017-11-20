@@ -1,0 +1,78 @@
+// Headings
+//
+// Quickly pass CSS rules to headings. Can specify ranges.
+//
+// Markup:
+// //
+// // Function: Headings
+// // #{headings( $from, $to )} { ... }
+// //
+// // $from: 'number'
+// // $to:   'number'
+// //
+// #{headings(1,6)} {
+//   color: white;
+// }
+//
+// Styleguide Functions - Headings
+@function headings($from: 1, $to: 6) {
+    @if $from==$to {
+        @return 'h#{$from}';
+    }
+    @else {
+        @return 'h#{$from},'+headings($from+1, $to);
+    }
+}
+
+// Color
+//
+// Retrieve a color value from a Sass map.
+//
+// Markup:
+// //
+// // Function: Swatch
+// // color( $color, $varient );
+// //
+// // $color: 'string'
+// // $varient: 'string' (optional)
+// //
+// color: color(orange);
+//
+// Styleguide Functions - Color
+// retrieve color from $colors map ie. `color(base, primary)`
+@function color($color-name, $color-variant: null) {
+    // color variant is optional
+    @if ($color-variant !=null) {
+        // map inception
+        @return map-get(map-get($colors, $color-name), $color-variant);
+    }
+    @else {
+        @return map-get($colors, $color-name);
+    }
+}
+
+// Radius
+//
+// Retrieve a radius value from a Sass map.
+//
+// Markup:
+// //
+// // Function: Radius
+// // radius( $size );
+// //
+// // $radius: 'string'
+// //
+// border-radius: radius(base);
+//
+// Styleguide Functions - Radius
+// retrieve radius from $radius map ie. `radius(base)`
+@function radius($size, $variant: null) {
+    // radius variant is optional
+    @if ($variant !=null) {
+        // map inception
+        @return map-get(map-get($radius, $size), $variant);
+    }
+    @else {
+        @return map-get($radius, $size);
+    }
+}

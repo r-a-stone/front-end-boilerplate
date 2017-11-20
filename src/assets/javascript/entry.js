@@ -1,2 +1,2 @@
-import './app.scss'
+import './entry.scss'
 import 'babel-polyfill'

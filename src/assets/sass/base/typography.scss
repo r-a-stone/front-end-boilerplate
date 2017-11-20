@@ -1,0 +1,36 @@
+@include font-face('Open Sans', '../fonts/open-sans-v15-latin-regular', 300, normal, eot woff2 woff ttf);
+@include font-face('Open Sans', '../fonts/open-sans-v15-latin-700', 700, normal, eot woff2 woff ttf);
+@include font-face('Open Sans', '../fonts/open-sans-v15-latin-italic', 300, italic, eot woff2 woff ttf);
+@include font-face('Open Sans', '../fonts/open-sans-v15-latin-700italic', 700, italic, eot woff2 woff ttf);
+html body {
+    font-family: 'Open Sans', serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: 'Open Sans', serif;
+        font-weight: 700;
+    }
+    h1 {
+        font-size: 1.6rem;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+    h3 {
+        font-size: 1.4rem;
+    }
+    h4 {
+        font-size: 1.3rem;
+    }
+    h5 {
+        font-size: 1.2rem;
+    }
+    h6 {
+        font-size: 1.1rem;
+    }
+}
