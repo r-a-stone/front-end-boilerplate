@@ -142,3 +142,14 @@
     left: 50%;
     transform: translateX(-50%);
 }
+
+@mixin span( $columns: null,
+$total: 12,
+$collapse: false) {
+    $width: (($columns / $total) * 100) * 1%;
+    @if($collapse) {}
+    @else {
+        $width: $width - 1%;
+    }
+    max-width: $width;
+}

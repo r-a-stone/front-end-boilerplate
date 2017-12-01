@@ -44,9 +44,11 @@ module.exports = {
                                 loader: 'sass-resources-loader',
                                 options: {
                                     resources: [
+                                        path.join(__dirname, 'node_modules', 'include-media', 'dist', '_include-media.scss'),
                                         path.join(config.paths.src, 'assets', 'sass', 'abstract', '_functions.scss'),
                                         path.join(config.paths.src, 'assets', 'sass', 'abstract', '_variables.scss'),
-                                        path.join(config.paths.src, 'assets', 'sass', 'abstract', '_mixins.scss')
+                                        path.join(config.paths.src, 'assets', 'sass', 'abstract', '_mixins.scss'),
+                                        path.join(config.paths.src, 'assets', 'sass', 'abstract', '_layout.scss')
                                     ]
                                 }
                             }

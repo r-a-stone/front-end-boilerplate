@@ -102,3 +102,15 @@
 @function rem($pxValue) {
     @return (strip-unit($pxValue) / 16) * 1rem;
 }
+
+@function fractionToDecimal($over, $under) {
+    @return (($over * 100) / $under) * 0.01;
+}
+
+@function fractionToPercentage($over, $under) {
+    @return (($over * 100)/ $under) * 1%;
+}
+
+@function decimalToPercentage($decimal) {
+    @return ($decimal * 100) * 1%
+}
