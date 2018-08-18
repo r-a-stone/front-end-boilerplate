@@ -7,6 +7,7 @@
 *.o
 *.so
 bin/
+assets/
 
 # Packages #
 ############
@@ -39,5 +40,6 @@ vendor/
 ._*
 .Spotlight-V100
 .Trashes
+.idea/
 ehthumbs.db
 Thumbs.db
